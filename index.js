@@ -50,7 +50,7 @@ class TriesTree {
             }
           }
         }
-        console.log(JSON.stringify(this.tree));
+        console.log(this.tree.toString());
       }else{
         rejected('Given Words is not an Array');
       }

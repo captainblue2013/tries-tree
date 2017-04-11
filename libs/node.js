@@ -13,12 +13,7 @@ class Node {
   }
 
   toString(){
-    let data = {};
-    data[this.ch] = [];
-    for(let k in this.children){
-      data[this.ch][this.children[k].ch] = this.children[k].toString();
-    }
-    return data;
+    return JSON.stringify(this, null, 2);
   }
 }
 module.exports = Node;
