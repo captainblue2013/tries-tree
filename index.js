@@ -72,7 +72,7 @@ class TriesTree {
     }
   };
 
-  dump(identity) {
+  dump(identity='') {
     if (this.config.runtimePath) {
       fs.writeFileSync(this.config.runtimePath+'/'+identity+'.json',this.tree.toString());
     }
@@ -84,6 +84,10 @@ class TriesTree {
       node.wakeUP(data);
       this.tree = data;
     }
+  }
+
+  toString(){
+    return JSON.stringify(this.tree);
   }
 }
 

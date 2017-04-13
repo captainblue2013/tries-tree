@@ -20,11 +20,11 @@ class Node {
     console.log('hello');
   }
 
-  static wakeUP(data){
+  static wakeUp(data){
     if(data.ch && data.count && data.children){
       data.__proto__ = Node.prototype;
       for(let k in data.children){
-        Node.wakeUP(data.children[k]);
+        Node.wakeUp(data.children[k]);
       }
     }
   }
