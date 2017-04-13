@@ -6,6 +6,7 @@
 
 const fs = require('fs');
 const node = require('./libs/node');
+const IDENTITY = 'LAN_TRIES_TREE';
 
 class TriesTree {
 
@@ -72,16 +73,16 @@ class TriesTree {
     }
   };
 
-  dump(identity='') {
+  dump(identity=IDENTITY) {
     if (this.config.runtimePath) {
       fs.writeFileSync(this.config.runtimePath+'/'+identity+'.json',this.tree.toString());
     }
   }
 
-  load(identify) {
+  load(identify=IDENTITY) {
     if (this.config.runtimePath) {
       let data = require(this.config.runtimePath+'/'+identify+'.json');
-      node.wakeUP(data);
+      node.wakeUp(data);
       this.tree = data;
     }
   }
