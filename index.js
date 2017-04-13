@@ -14,7 +14,7 @@ class TriesTree {
     this.check();
 
     this.tree = new node('ROOT');
-  }
+  };
 
   check() {
     if (this.config.runtimePath) {
@@ -24,43 +24,67 @@ class TriesTree {
         throw e;
       }
     }
-  }
+  };
 
   build(words) {
-    return new Promise((resolved, rejected) => {
+    if(Array.isArray(words) && words.length){
+      for(let k in words){
+        let chs = Array.from(words[k]);
+        let ch = null;
+        let _node = this.tree.children;
 
-      if(Array.isArray(words) && words.length){
-        for(let k in words){
-          let chs = Array.from(words[k]);
-          let ch = null;
-          let _node = this.tree.children;
+        while(ch = chs.shift()){
 
-          while(ch = chs.shift()){
-
-            if(ch === ' '){
-              _node = this.tree.children;
-              continue;
-            }
-            if(_node[ch]){
-              _node[ch].count ++;
-              _node = _node[ch].children;
-            }else {
-              _node[ch] = new node(ch);
-              _node = _node[ch].children;
-            }
+          if(ch === ' '){
+            _node = this.tree.children;
+            continue;
+          }
+          if(_node[ch]){
+            _node[ch].count ++;
+            _node = _node[ch].children;
+          }else {
+            _node[ch] = new node(ch);
+            _node = _node[ch].children;
           }
         }
-        console.log(this.tree.toString());
-      }else{
-        rejected('Given Words is not an Array');
       }
-    });
+    }
+  };
+
+  add(word) {
+    let chs = Array.from(word);
+    let ch = null;
+    let _node = this.tree.children;
+
+    while(ch = chs.shift()){
+
+      if(ch === ' '){
+        _node = this.tree.children;
+        continue;
+      }
+      if(_node[ch]){
+        _node[ch].count ++;
+        _node = _node[ch].children;
+      }else {
+        _node[ch] = new node(ch);
+        _node = _node[ch].children;
+      }
+    }
+  };
+
+  dump(identity) {
+    if (this.config.runtimePath) {
+      fs.writeFileSync(this.config.runtimePath+'/'+identity+'.json',this.tree.toString());
+    }
   }
 
-  store() {
-
+  load(identify) {
+    if (this.config.runtimePath) {
+      let data = require(this.config.runtimePath+'/'+identify+'.json');
+      node.wakeUP(data);
+      this.tree = data;
+    }
   }
-
 }
 
 
