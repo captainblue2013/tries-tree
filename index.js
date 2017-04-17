@@ -30,7 +30,10 @@ class TriesTree {
 
   build(words) {
     if (Array.isArray(words) && words.length) {
+      words = [...new Set(words)];
+
       for (let k in words) {
+
         let chs = Array.from(words[k]);
         let ch = null;
         let _node = this.tree.children;
