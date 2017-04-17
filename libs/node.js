@@ -9,6 +9,7 @@ class Node {
   constructor(ch){
     this.ch = ch;
     this.count = 1;
+    this.deep = 0;
     this.children = {};
   }
 

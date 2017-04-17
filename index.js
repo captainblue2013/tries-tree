@@ -37,7 +37,7 @@ class TriesTree {
         let chs = Array.from(words[k]);
         let ch = null;
         let _node = this.tree.children;
-
+        this.tree.deep = (this.tree.deep<chs.length)?chs.length:this.tree.deep;
         while (ch = chs.shift()) {
 
           if (ch === ' ') {
@@ -46,9 +46,11 @@ class TriesTree {
           }
           if (_node[ch]) {
             _node[ch].count++;
+            _node[ch].deep = (_node[ch].deep<chs.length)?chs.length:_node[ch].deep;
             _node = _node[ch].children;
           } else {
             _node[ch] = new node(ch);
+            _node[ch].deep = chs.length;
             _node = _node[ch].children;
           }
         }
