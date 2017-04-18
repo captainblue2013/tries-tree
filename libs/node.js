@@ -7,10 +7,10 @@
 class Node {
 
   constructor(ch){
-    this.ch = ch;
-    this.count = 1;
-    this.deep = 0;
-    this.children = {};
+    this.c = ch;
+    this.n = 1;
+    this.l = 0;
+    this.s = {};
   }
 
   toString(){
@@ -22,10 +22,10 @@ class Node {
   }
 
   static wakeUp(data){
-    if(data.ch && data.count && data.children){
+    if(data.c && data.n && data.s){
       data.__proto__ = Node.prototype;
-      for(let k in data.children){
-        Node.wakeUp(data.children[k]);
+      for(let k in data.s){
+        Node.wakeUp(data.s[k]);
       }
     }
   }
