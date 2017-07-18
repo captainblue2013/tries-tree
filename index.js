@@ -37,17 +37,17 @@ class TriesTree {
         let chs = Array.from(words[k]);
         let ch = null;
         let _node = this.tree.s;
-        this.tree.n ++;
-        this.tree.l = (this.tree.l<chs.length)?chs.length:this.tree.l;
+        this.tree.n++;
+        this.tree.l = (this.tree.l < chs.length) ? chs.length : this.tree.l;
         while (ch = chs.shift()) {
-          ch = ch+'';
+          ch = ch + '';
           if (ch === ' ') {
             _node = this.tree.s;
             continue;
           }
           if (_node[ch]) {
             _node[ch].n++;
-            _node[ch].l = (_node[ch].l<chs.length)?chs.length:_node[ch].l;
+            _node[ch].l = (_node[ch].l < chs.length) ? chs.length : _node[ch].l;
             _node = _node[ch].s;
           } else {
             _node[ch] = new node(ch);
@@ -59,6 +59,28 @@ class TriesTree {
     }
   }
 
+  info(word) {
+    let chs = Array.from(word);
+    let ch;
+    let _node = this.tree.s;
+    let _p = null;
+    let currentCount = 0;
+
+    while (ch = chs.shift()) {
+      if (ch === ' ') {
+        return false;
+      }
+      if (_node[ch]) {
+        _p = _node[ch];
+        currentCount = _node[ch].n;
+        _node = _node[ch].s;
+      } else {
+        return false;
+      }
+    }
+    delete _p.s;
+    return _p;
+  }
 
   find(word) {
     let chs = Array.from(word);
@@ -68,28 +90,28 @@ class TriesTree {
     let currentCount = 0;
 
     while (ch = chs.shift()) {
-      if(ch === ' '){
+      if (ch === ' ') {
         return false;
       }
-      if(_node[ch]){
+      if (_node[ch]) {
         _p = _node[ch];
         currentCount = _node[ch].n;
         _node = _node[ch].s;
-      }else{
+      } else {
         return false;
       }
     }
 
     let nodeCount = 0;
 
-    if(_p.s){
-      for(let k in _p.s){
+    if (_p.s) {
+      for (let k in _p.s) {
 
         nodeCount += _p.s[k].n;
       }
     }
 
-    if(nodeCount < currentCount){
+    if (nodeCount < currentCount) {
       return true;
     }
     return false;
@@ -132,7 +154,7 @@ class TriesTree {
   }
 
   toString() {
-    return JSON.stringify(this.tree);
+    return this.tree.toString();
   }
 }
 
