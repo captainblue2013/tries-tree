@@ -1,7 +1,7 @@
 {
   "name": "tries-tree",
-  "version": "17.04.17",
-  "description": "",
+  "version": "17.7.18",
+  "description": "let TriesTree = require('tries-tree');",
   "main": "index.js",
   "scripts": {
     "test": "echo \" no test specified\" && exit 0"
@@ -13,5 +13,13 @@
   },
   "devDependencies": {
     "faker": "^4.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/captainblue2013/tries-tree.git"
+  },
+  "bugs": {
+    "url": "https://github.com/captainblue2013/tries-tree/issues"
+  },
+  "homepage": "https://github.com/captainblue2013/tries-tree#readme"
 }

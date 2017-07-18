@@ -12,3 +12,22 @@
     
  
  ![](http://lanhao.name/img/upload/a.png)
+ 
+ 
+ # Find 、Add
+ 
+    let TriesTree = require('tries-tree');
+    
+    let triesTree = new TriesTree([]);
+    
+    triesTree.build(['abc','abd','abcd']);
+    
+    triesTree.find('abc'); //true
+    
+    triesTree.find('abcd'); //true
+    
+    triesTree.find('ab'); //false
+    
+    triesTree.add('ab'); 
+    
+    triesTree.find('ab'); //true
