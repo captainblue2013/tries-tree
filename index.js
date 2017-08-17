@@ -27,7 +27,6 @@ class TriesTree {
     }
   }
 
-
   build(words) {
     if (Array.isArray(words) && words.length) {
       words = [...new Set(words)];
@@ -137,7 +136,6 @@ class TriesTree {
       }
     }
   }
-
 
   dump(identity = IDENTITY) {
     if (this.config.runtimePath) {
