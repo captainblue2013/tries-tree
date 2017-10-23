@@ -1,6 +1,6 @@
 {
   "name": "tries-tree",
-  "version": "17.7.18a",
+  "version": "17.7.19",
   "description": "let TriesTree = require('tries-tree');",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,7 @@
     "colors": "^1.1.2"
   },
   "devDependencies": {
+    "benchmark": "^2.1.4",
     "faker": "^4.1.0"
   },
   "repository": {
