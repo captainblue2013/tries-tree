@@ -1,3 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 node_modules
 query_resul*
+dist
+tsconfig.tsbuildinfo
+.nyc_output
+coverage
