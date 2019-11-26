@@ -5,13 +5,14 @@
   "main": "dist/tries-tree.js",
   "scripts": {
     "test": "npx mocha --recursive -r ts-node/register test/**/*.spec.ts",
-    "build": "npx eslint src/**/*.ts --fix && npx tsc",
-    "lint": "npx eslint src/**/*.ts --fix",
+    "build": "npx tsc",
+    "lint": "npx eslint src/**/*.ts --cache --fix",
     "cover": "npx nyc npm test"
   },
   "author": "lanhao",
   "license": "ISC",
   "dependencies": {
+    "@mohism/ts-kit": "^1.1.1",
     "@mohism/utils": "^1.0.2",
     "colors": "^1.1.2"
   },
@@ -25,8 +26,8 @@
     "chai": "^4.2.0",
     "eslint": "^6.7.1",
     "faker": "^4.1.0",
+    "husky": "^3.1.0",
     "mocha": "^6.2.2",
-    "nodemon": "^2.0.1",
     "nyc": "^14.1.1",
     "ts-node": "^8.5.2",
     "typescript": "^3.7.2"
@@ -38,5 +39,10 @@
   "bugs": {
     "url": "https://github.com/captainblue2013/tries-tree/issues"
   },
-  "homepage": "https://github.com/captainblue2013/tries-tree#readme"
+  "homepage": "https://github.com/captainblue2013/tries-tree#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint & npm test"
+    }
+  }
 }
